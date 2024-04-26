@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boeing vs Airbus</title>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        .company {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+        .boeing {
+            background-color: blue;
+            color: white;
+        }
+        .airbus {
+            background-color: red;
+            color: white;
+        }
+        .company h1 {
+            cursor: pointer;
+        }
+        .plane-list {
+            display: none;
+            list-style: none;
+            padding: 0;
+        }
+        .plane-list li {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .plane-info {
+            display: none;
+        }
+        .back-button {
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="company boeing">
+        <h1>Boeing</h1>
+        <ul class="plane-list">
+            <li data-plane="737">737</li>
+            <li data-plane="747">747</li>
+            <li data-plane="777">777</li>
+            <li data-plane="787">787</li>
+        </ul>
+        <div class="plane-info">
+            <h2>Plane Information</h2>
+            <p>Information about the selected plane will be displayed here.</p>
+        </div>
+        <button class="back-button">Back to Boeing</button>
+    </div>
+    <div class="company airbus">
+        <h1>Airbus</h1>
+        <ul class="plane-list">
+            <li data-plane="A320">A320</li>
+            <li data-plane="A330">A330</li>
+            <li data-plane="A350">A350</li>
+            <li data-plane="A380">A380</li>
+        </ul>
+        <div class="plane-info">
+            <h2>Plane Information</h2>
+            <p>Information about the selected plane will be displayed here.</p>
+        </div>
+        <button class="back-button">Back to Airbus</button>
+    </div>
+    
+    <script>
+        const boeingCompany = document.querySelector('.boeing');
+        const airbusCompany = document.querySelector('.airbus');
+        const boeingPlaneList = document.querySelector('.boeing .plane-list');
+        const airbusPlaneList = document.querySelector('.airbus .plane-list');
+        const boeingPlaneInfo = document.querySelector('.boeing .plane-info');
+        const airbusPlaneInfo = document.querySelector('.airbus .plane-info');
+
+        boeingCompany.addEventListener('click', () => {
+            if (boeingPlaneList.style.display === 'none') {
+                boeingPlaneList.style.display = 'block';
+                boeingPlaneInfo.style.display = 'none';
+            } else {
+                boeingPlaneList.style.display = 'none';
+            }
+        });
+
+        airbusCompany.addEventListener('click', () => {
+            if (airbusPlaneList.style.display === 'none') {
+                airbusPlaneList.style.display = 'block';
+                airbusPlaneInfo.style.display = 'none';
+            } else {
+                airbusPlaneList.style.display = 'none';
+            }
+        });
+
+        boeingPlaneList.addEventListener('click', (event) => {
+            const clickedPlane = event.target.getAttribute('data-plane');
